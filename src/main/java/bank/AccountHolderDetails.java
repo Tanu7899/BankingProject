@@ -1,45 +1,8 @@
 package bank;
 
 import java.sql.*;
-import java.util.Scanner;
 
 public class AccountHolderDetails extends DBConDetails{
-        public static void main(String args[]) {
-            Scanner scanner=new Scanner(System.in);
-            AccountHolderDetails userDetails=new AccountHolderDetails();
-            boolean choice;
-            do {
-                System.out.print("1.Show user details\n2.Insert user details\n3.Update user details\nSelect an option:");
-                int choice_ud = scanner.nextInt();
-                if (choice_ud == 1) {
-                    userDetails.showAllAccountHolderDetails();
-                } else if (choice_ud == 2) {
-                    System.out.println("Enter following details");
-                    System.out.print("Name:");
-                    scanner.nextLine();
-                    String name = scanner.nextLine();
-                    System.out.print("Phone no:");
-                    Long ph_no = Long.parseLong(scanner.nextLine());
-                    System.out.print("Address:");
-                    String address = scanner.nextLine();
-                    userDetails.insertAccountHolderDetails(name, ph_no, address);
-                } else if (choice_ud == 3) {
-                    System.out.println("Enter following details");
-                    System.out.print("account_id:");
-                    int  account_id=scanner.nextInt();
-                    System.out.print("Which field do you want to update(name/ph_no/address):");
-                    scanner.nextLine();
-                    String updateColumn = scanner.nextLine();
-                    System.out.print("Enter new value for "+updateColumn+":");
-                    String updateColumnValue = scanner.nextLine();
-                    userDetails.updateAccountHolderDetails(account_id,updateColumn,updateColumnValue);
-                }
-                System.out.print("Do you want to continue(Y/N):");
-                choice=(scanner.next().equalsIgnoreCase("Y"))?true:false;
-            }while (choice);
-            scanner.close();
-        }
-
        public void showAllAccountHolderDetails(){
            try {
                initialiseMySQLStatement();
@@ -52,7 +15,6 @@ public class AccountHolderDetails extends DBConDetails{
                        rs.getLong("balance"),
                        rs.getTimestamp("created_at"),
                        rs.getTimestamp("updated_at"));
-
            } catch (Exception e) {
                System.out.println(e);
            }
@@ -77,6 +39,7 @@ public class AccountHolderDetails extends DBConDetails{
         }
         return insertedInt;
     }
+
     public int updateAccountHolderDetails(int account_id, String userDetailsKey,String userDetailsValue){
             int updatedInt=0;
         try {
@@ -100,5 +63,4 @@ public class AccountHolderDetails extends DBConDetails{
         }
         return updatedInt;
     }
-
 }
