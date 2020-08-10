@@ -5,6 +5,7 @@ import java.sql.*;
 public class DBConDetails extends PropertyFileUtility {
     protected Connection con=null;
     protected Statement statement=null;
+    //Reads all the required config and set connection and statement
     protected void initialiseMySQLStatement(){
         String host=getConfigProperties("mysql_host");
         String username=getConfigProperties("mysql_username");
