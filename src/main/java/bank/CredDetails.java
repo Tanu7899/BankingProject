@@ -3,7 +3,8 @@ package bank;
 import java.sql.ResultSet;
 
 public class CredDetails extends DBConDetails{
-    public int createSession(String username,String password){
+    //Validate username, password and returns account_id
+    public int validateCredentials(String username, String password){
            int accountId=-1;
             try {
                initialiseMySQLStatement();
@@ -18,7 +19,7 @@ public class CredDetails extends DBConDetails{
            }
             return  accountId;
         }
-
+    //Create credentials for existing user
     public int insertCredentials(int account_id, String username , String password){
         int insertedInt=0;
         try {
@@ -35,7 +36,7 @@ public class CredDetails extends DBConDetails{
         }
         return insertedInt;
     }
-
+    //Update only password in credentials for existing user
     public int updateCredentials(int account_id, String password){
             int updatedInt=0;
         try {

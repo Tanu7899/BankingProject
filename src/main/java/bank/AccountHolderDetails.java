@@ -3,7 +3,8 @@ package bank;
 import java.sql.*;
 
 public class AccountHolderDetails extends DBConDetails{
-       public void showAllAccountHolderDetails(){
+    //Display all the users details
+    public void showAllAccountHolderDetails(){
            try {
                initialiseMySQLStatement();
                ResultSet rs = statement.executeQuery("select * from user_details");
@@ -22,7 +23,7 @@ public class AccountHolderDetails extends DBConDetails{
                try {con.close(); }catch (Exception e){e.printStackTrace();}
            }
         }
-
+    //Insert new user details
     public int insertAccountHolderDetails(String name, Long ph_no, String address){
         int insertedInt=0;
         try {
@@ -39,7 +40,7 @@ public class AccountHolderDetails extends DBConDetails{
         }
         return insertedInt;
     }
-
+    //Update existing user details
     public int updateAccountHolderDetails(int account_id, String userDetailsKey,String userDetailsValue){
             int updatedInt=0;
         try {

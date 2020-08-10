@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.util.Properties;
 
 public class PropertyFileUtility {
+    //Read config property value as per given key
    public String getConfigProperties(String key) {
        String value = null;
        try {
