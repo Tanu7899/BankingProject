@@ -3,10 +3,11 @@ package bank;
 import java.sql.*;
 
 public class DBConDetails extends PropertyFileUtility {
-    protected Connection con=null;
-    protected Statement statement=null;
+    private Connection con=null;
+    private Statement statement=null;
     //Reads all the required config and set connection and statement
-    protected void initialiseMySQLStatement(){
+
+    public DBConDetails() {
         String host=getConfigProperties("mysql_host");
         String username=getConfigProperties("mysql_username");
         String password=getConfigProperties("mysql_password");
@@ -18,4 +19,12 @@ public class DBConDetails extends PropertyFileUtility {
             e.printStackTrace();
         }
     }
+    public Connection getCon() {
+        return con;
+    }
+
+    public Statement getStatement() {
+        return statement;
+    }
+
 }

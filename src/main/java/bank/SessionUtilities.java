@@ -8,9 +8,11 @@ public class SessionUtilities extends PropertyFileUtility{
         String adminPassword=getConfigProperties("admin_password");
         if(adminUsername.equals(username)&&adminPassword.equals(password)) {
             session_id=0;
+            System.out.println("You have logged in as an admin");
         }
         else if(new CredDetails().validateCredentials(username,password)!=-1){
             session_id=new CredDetails().validateCredentials(username,password);
+            System.out.println("You have logged in as a user");
         }
         else
             System.out.println("You have entered a wrong credential");
